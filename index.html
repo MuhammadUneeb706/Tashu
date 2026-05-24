@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Forever Journey | Uneeb & Minahil</title>
+    
+    <!-- Premium Typography & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================
+           1. RESET & BASE THEME STYLES
+           ========================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #1a0813 0%, #3a1127 50%, #1a0813 100%);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            padding-bottom: 60px;
+        }
+
+        /* ==========================================
+           2. FLOATING HEARTS BACKGROUND
+           ========================================== */
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart-particle {
+            position: absolute;
+            color: rgba(255, 105, 180, 0.4);
+            font-size: 1.5rem;
+            animation: floatUp 6s linear infinite;
+            bottom: -50px;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-105vh) translateX(50px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* ==========================================
+           3. HERO LAYOUT & TIMERS SECTION
+           ========================================== */
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            padding: 40px 20px 10px 20px;
+        }
+
+        .main-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            color: #ff65a3;
+            text-shadow: 0 0 15px rgba(255, 101, 163, 0.6);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #e0e0e0;
+            margin-bottom: 50px;
+        }
+
+        .timers-wrapper {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            align-items: stretch;
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        .timer-container {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 35px;
+            flex: 1;
+            min-width: 300px;
+            box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .timer-container:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 101, 163, 0.4);
+        }
+
+        .timer-container h3 {
+            margin-bottom: 25px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 1rem;
+            color: #ffb3d1;
+        }
+
+        .timer-display {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .time-box {
+            background: rgba(255, 101, 163, 0.12);
+            padding: 12px 15px;
+            border-radius: 16px;
+            min-width: 75px;
+            border: 1px solid rgba(255, 101, 163, 0.2);
+        }
+
+        .time-box span {
+            font-size: 1.8rem;
+            font-weight: 600;
+            display: block;
+            color: #ff85b3;
+        }
+
+        .time-box p {
+            font-size: 0.7rem;
+            color: #b3b3b3;
+            text-transform: uppercase;
+            margin-top: 5px;
+            letter-spacing: 1px;
+        }
+
+        /* ==========================================
+           4. MOOD SYNC RINGS SECTION
+           ========================================== */
+        .mood-sync-section {
+            display: flex;
+            justify-content: center;
+            padding: 30px 20px;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .mood-container {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 30px;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .mood-container h2, .calculator-container h2 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #ffb3d1;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .rings-display {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .ring-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .svg-ring-wrapper {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 15px;
+        }
+
+        .svg-ring-wrapper svg {
+            transform: rotate(-90deg);
+        }
+
+        .ring-bg {
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.05);
+            stroke-width: 12;
+        }
+
+        .ring-progress {
+            fill: none;
+            stroke-width: 12;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 1s ease-in-out;
+        }
+
+        .ring-hubby { stroke: url(#gradient-hubby); filter: drop-shadow(0 0 8px #00f2fe); }
+        .ring-wife { stroke: url(#gradient-wife); filter: drop-shadow(0 0 8px #ff65a3); }
+
+        .ring-label-inside {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5rem;
+        }
+
+        .ring-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .ring-status {
+            font-size: 0.8rem;
+            color: #b3b3b3;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .control-trigger {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .btn-sm {
+            background: rgba(255, 255, 255, 0.05);
+            color: #b3b3b3;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 6px 15px;
+            font-size: 0.75rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-sm:hover {
+            background: rgba(255, 101, 163, 0.2);
+            color: #fff;
+            border-color: #ff65a3;
+        }
+        .mood-controls {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: left;
+        }
+        .control-group {
+            margin-bottom: 15px;
+        }
+        .control-group label {
+            display: block;
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+            color: #e0e0e0;
+        }
+        .control-group select {
+            background: #2a1220;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 6px 10px;
+            border-radius: 8px;
+            width: 100%;
+        }
+
+        /* ==========================================
+           5. COSMIC LOYALTY LOVE CALCULATOR
+           ========================================== */
+        .calculator-section {
+            display: flex;
+            justify-content: center;
+            padding: 30px 20px;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .calculator-container {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 40px 30px;
+            max-width: 650px;
+            width: 100%;
+            box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.4);
+            text-align: center;
+        }
+
+        .inputs-wrapper {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .input-box {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .input-box label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ffb3d1;
+            margin-bottom: 8px;
+        }
+
+        .input-box input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 15px;
+            border-radius: 12px;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .input-box input:focus {
+            outline: none;
+            border-color: #ff65a3;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 10px rgba(255, 101, 163, 0.2);
+        }
+
+        .calc-result-display {
+            margin-top: 25px;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .score-counter {
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: #ff65a3;
+            text-shadow: 0 0 15px rgba(255, 101, 163, 0.4);
+            line-height: 1;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        .verdict-msg {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+            max-width: 500px;
+            font-style: italic;
+        }
+
+        .verdict-msg.warning-alert {
+            color: #ff4757;
+            font-weight: 600;
+            font-style: normal;
+            text-shadow: 0 0 8px rgba(255, 71, 87, 0.3);
+        }
+
+        /* ==========================================
+           6. INTERACTIVE CARD SECTION
+           ========================================== */
+        .interactive-notes {
+            display: flex;
+            justify-content: center;
+            padding: 20px 20px 40px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 45px 35px;
+            border-radius: 24px;
+            max-width: 650px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.4);
+        }
+
+        .card h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.8rem;
+            color: #ff65a3;
+            margin-bottom: 20px;
+        }
+
+        .reason-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #f0f0f0;
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #ff65a3, #ff85b3);
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 5px 20px rgba(255, 101, 163, 0.4);
+            margin-top: 20px;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255, 101, 163, 0.6); }
+        .btn:active { transform: translateY(1px); }
+
+        /* Responsive UI Adjustments */
+        @media (max-width: 768px) {
+            .timers-wrapper { flex-direction: column; gap: 20px; }
+            .timer-container { width: 100%; max-width: 400px; }
+            .rings-display { gap: 30px; }
+            .inputs-wrapper { flex-direction: column; gap: 15px; }
+            .main-title { font-size: 3.2rem; }
+            .card h2 { font-size: 2.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SVG Progress Gradients -->
+    <svg style="width:0;height:0;position:absolute;">
+        <linearGradient id="gradient-hubby" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#00f2fe" />
+            <stop offset="100%" stop-color="#4facfe" />
+        </linearGradient>
+        <linearGradient id="gradient-wife" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ff65a3" />
+            <stop offset="100%" stop-color="#ff85b3" />
+        </linearGradient>
+    </svg>
+
+    <!-- Floating Atmosphere Layer -->
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <!-- 1. Hero Block & Relationship Timers -->
+    <header class="hero">
+        <h1 class="main-title">To My Beautiful Wife</h1>
+        <p class="subtitle">Every single day is a masterpiece with you</p>
+        
+        <div class="timers-wrapper">
+            <!-- Timer A: First Meet -->
+            <div class="timer-container">
+                <h3>When Our Story Began</h3>
+                <div class="timer-display" id="meetTimer">
+                    <div class="time-box"><span id="meet-days">00</span><p>Days</p></div>
+                    <div class="time-box"><span id="meet-hours">00</span><p>Hours</p></div>
+                    <div class="time-box"><span id="meet-minutes">00</span><p>Mins</p></div>
+                    <div class="time-box"><span id="meet-seconds">00</span><p>Secs</p></div>
+                </div>
+            </div>
+
+            <!-- Timer B: First Proposal -->
+            <div class="timer-container">
+                <h3>My First Proposal To You</h3>
+                <div class="timer-display" id="proposalTimer">
+                    <div class="time-box"><span id="prop-days">00</span><p>Days</p></div>
+                    <div class="time-box"><span id="prop-hours">00</span><p>Hours</p></div>
+                    <div class="time-box"><span id="prop-minutes">00</span><p>Mins</p></div>
+                    <div class="time-box"><span id="prop-seconds">00</span><p>Secs</p></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Interactive Mood Rings Component -->
+    <section class="mood-sync-section">
+        <div class="mood-container">
+            <h2>Our Live Activity Rings</h2>
+            
+            <div class="rings-display">
+                <!-- Hubby Hub -->
+                <div class="ring-block">
+                    <div class="svg-ring-wrapper">
+                        <svg width="150" height="150">
+                            <circle class="ring-bg" cx="75" cy="75" r="60"></circle>
+                            <circle id="hubbyRing" class="ring-progress ring-hubby" cx="75" cy="75" r="60" stroke-dasharray="377" stroke-dashoffset="377"></circle>
+                        </svg>
+                        <div class="ring-label-inside" id="hubbyEmoji">👨‍💻</div>
+                    </div>
+                    <div class="ring-title">Hubby</div>
+                    <div class="ring-status" id="hubbyStatus">Working</div>
+                </div>
+
+                <!-- Wife Hub -->
+                <div class="ring-block">
+                    <div class="svg-ring-wrapper">
+                        <svg width="150" height="150">
+                            <circle class="ring-bg" cx="75" cy="75" r="60"></circle>
+                            <circle id="wifeRing" class="ring-progress ring-wife" cx="75" cy="75" r="60" stroke-dasharray="377" stroke-dashoffset="377"></circle>
+                        </svg>
+                        <div class="ring-label-inside" id="wifeEmoji">👑</div>
+                    </div>
+                    <div class="ring-title">Wife</div>
+                    <div class="ring-status" id="wifeStatus">Missing You</div>
+                </div>
+            </div>
+
+            <!-- Virtual Synchronizer Drop Panel -->
+            <div class="control-trigger">
+                <button class="btn-sm" id="toggleControl">Open Status Control Panel</button>
+            </div>
+
+            <div class="mood-controls" id="controlPanel">
+                <div class="control-group">
+                    <label>Your Status (Hubby):</label>
+                    <select id="hubbyStatusSelect">
+                        <option value="👨‍💻|Working|40">Working 👨‍💻</option>
+                        <option value="❤️|Missing You|100">Missing You ❤️</option>
+                        <option value="☕|Free / Coffee Time|75">Free / Coffee Time ☕</option>
+                        <option value="😴|Sleepy|15">Sleepy 😴</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>Her Status (Wife):</label>
+                    <select id="wifeStatusSelect">
+                        <option value="👑|Missing You|100">Missing You 👑</option>
+                        <option value="✨|Happy / Glowing|90">Happy / Glowing ✨</option>
+                        <option value="📚|Studying / Busy|50">Studying / Busy 📚</option>
+                        <option value="🛍️|Shopping|80">Shopping 🛍️</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Cosmic Loyalty Love Calculator Component -->
+    <section class="calculator-section">
+        <div class="calculator-container">
+            <h2>Cosmic Loyalty Calculator</h2>
+            <div class="inputs-wrapper">
+                <div class="input-box">
+                    <label>Partner 1 Name</label>
+                    <input type="text" id="name1" placeholder="Enter name...">
+                </div>
+                <div class="input-box">
+                    <label>Partner 2 Name</label>
+                    <input type="text" id="name2" placeholder="Enter name...">
+                </div>
+            </div>
+            <button class="btn" id="calculateBtn">Analyze Bond</button>
+
+            <div class="calc-result-display">
+                <div class="score-counter" id="scoreValue">0%</div>
+                <p class="verdict-msg" id="verdictText">Enter names to measure the exact cryptographic affinity of your souls.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Interactive Compliments Engine -->
+    <section class="interactive-notes">
+        <div class="card">
+            <h2>Reasons I Love You</h2>
+            <p id="loveReason" class="reason-text">Click the button below to see a small reminder of why you mean the world to me.</p>
+            <button id="nextReasonBtn" class="btn">Discover a Reason</button>
+        </div>
+    </section>
+
+    <!-- ==========================================
+           7. SYSTEM CORE JAVASCRIPT
+           ========================================== */ -->
+    <script>
+        /* -------------------------------------------
+           A. TIMERS SYSTEM ARCHITECTURE (ACCURATE & SYNCED)
+           ------------------------------------------- */
+        // JavaScript Dates are 0-indexed for months. 
+        // Month 9 = October, Month 4 = May.
+        const firstMeetDate    = new Date(2024, 9, 22, 16, 0, 0); // 22 Oct 2024, 4:00 PM
+        const firstProposalDate = new Date(2025, 4, 2, 2, 45, 0);   // 2 May 2025, 2:45 AM
+
+        function calculateExactTime(targetDate, elementPrefix) {
+            const now = new Date();
+            let difference = now - targetDate;
+
+            // Absolute total calculation protection if user device clock skips
+            if (difference < 0) difference = 0;
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            // Synchronized UI Update Engine
+            document.getElementById(`${elementPrefix}-days`).innerText = String(days).padStart(2, '0');
+            document.getElementById(`${elementPrefix}-hours`).innerText = String(hours).padStart(2, '0');
+            document.getElementById(`${elementPrefix}-minutes`).innerText = String(minutes).padStart(2, '0');
+            document.getElementById(`${elementPrefix}-seconds`).innerText = String(seconds).padStart(2, '0');
+        }
+
+        function updateAllTimers() {
+            calculateExactTime(firstMeetDate, 'meet');
+            calculateExactTime(firstProposalDate, 'prop');
+        }
+        
+        // Accurate Frame Synced Engine loop running smoothly
+        setInterval(updateAllTimers, 1000);
+        updateAllTimers(); 
+
+        /* -------------------------------------------
+           B. ACTIVITY RINGS INTERACTION LOGIC
+           ------------------------------------------- */
+        const RADIUS = 60;
+        const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
+
+        function setRingProgress(circleId, percentage) {
+            const circle = document.getElementById(circleId);
+            if(circle) {
+                const offset = CIRCUMFERENCE - (percentage / 100) * CIRCUMFERENCE;
+                circle.style.strokeDashoffset = offset;
+            }
+        }
+
+        function initRings() {
+            const hubbyData = localStorage.getItem('hubbyState') || "👨‍💻|Working|40";
+            const wifeData = localStorage.getItem('wifeState') || "👑|Missing You|100";
+
+            applyState('hubby', hubbyData);
+            applyState('wife', wifeData);
+
+            document.getElementById('hubbyStatusSelect').value = hubbyData;
+            document.getElementById('wifeStatusSelect').value = wifeData;
+        }
+
+        function applyState(person, dataString) {
+            const [emoji, statusText, percentage] = dataString.split('|');
+            document.getElementById(`${person}Emoji`).innerText = emoji;
+            document.getElementById(`${person}Status`).innerText = statusText;
+            setRingProgress(`${person}Ring`, parseInt(percentage));
+        }
+
+        const toggleBtn = document.getElementById('toggleControl');
+        const controlPanel = document.getElementById('controlPanel');
+
+        toggleBtn.addEventListener('click', () => {
+            const isVisible = controlPanel.style.display === 'block';
+            controlPanel.style.display = isVisible ? 'none' : 'block';
+            toggleBtn.innerText = isVisible ? 'Open Status Control Panel' : 'Close Control Panel';
+        });
+
+        document.getElementById('hubbyStatusSelect').addEventListener('change', (e) => {
+            localStorage.setItem('hubbyState', e.target.value);
+            applyState('hubby', e.target.value);
+        });
+
+        document.getElementById('wifeStatusSelect').addEventListener('change', (e) => {
+            localStorage.setItem('wifeState', e.target.value);
+            applyState('wife', e.target.value);
+        });
+
+        setTimeout(initRings, 500);
+
+        /* -------------------------------------------
+           C. LOYALTY LOVE CALCULATOR LOGIC ENGINE
+           ------------------------------------------- */
+        const calcBtn = document.getElementById('calculateBtn');
+        const scoreValue = document.getElementById('scoreValue');
+        const verdictText = document.getElementById('verdictText');
+        let calculationActive = false;
+
+        calcBtn.addEventListener('click', () => {
+            if (calculationActive) return;
+
+            const n1 = document.getElementById('name1').value.trim().toLowerCase();
+            const n2 = document.getElementById('name2').value.trim().toLowerCase();
+
+            if (!n1 || !n2) {
+                verdictText.innerText = "Please fill in both name fields to complete the verification process!";
+                verdictText.classList.remove('warning-alert');
+                scoreValue.style.display = 'none';
+                return;
+            }
+
+            calculationActive = true;
+            scoreValue.style.display = 'block';
+            verdictText.classList.remove('warning-alert');
+            verdictText.innerText = "Calculating geometric multi-verse alignments...";
+
+            const match1 = (n1 === 'uneeb' && n2 === 'minahil');
+            const match2 = (n1 === 'minahil' && n2 === 'uneeb');
+            const loyaltyViolation = (n1 === 'uneeb' || n2 === 'uneeb' || n1 === 'minahil' || n2 === 'minahil');
+
+            let finalTargetScore = 0;
+            let finalMessage = "";
+            let isViolation = false;
+
+            if (match1 || match2) {
+                finalTargetScore = 100;
+                finalMessage = "Perfect 100% Cosmic Affinity! Uneeb & Minahil are bound across space and time. No math can measure your beautiful love story! ❤️✨";
+                for(let i=0; i<30; i++) { setTimeout(createHeart, i * 80); }
+            } else if (loyaltyViolation) {
+                finalTargetScore = 0;
+                finalMessage = "Access Denied (0%). System Error: Uneeb sirf Minahil ka hai, aur Minahil sirf Uneeb ki! 🛑 Interaction terminated.";
+                isViolation = true;
+            } else {
+                finalTargetScore = 0;
+                finalMessage = "System Scan (0% Match): These names do not possess the rare soulmate cryptography registered in this galaxy.";
+            }
+
+            let currentDisplayScore = 0;
+            scoreValue.innerText = "0%";
+            
+            if (finalTargetScore === 0) {
+                setTimeout(() => {
+                    scoreValue.innerText = "0%";
+                    verdictText.innerText = finalMessage;
+                    if(isViolation) verdictText.classList.add('warning-alert');
+                    calculationActive = false;
+                }, 800);
+            } else {
+                let interval = setInterval(() => {
+                    currentDisplayScore += 2;
+                    scoreValue.innerText = currentDisplayScore + "%";
+                    if (currentDisplayScore >= finalTargetScore) {
+                        clearInterval(interval);
+                        verdictText.innerText = finalMessage;
+                        calculationActive = false;
+                    }
+                }, 25);
+            }
+        });
+
+        /* -------------------------------------------
+           D. COMPLIMENTS ROTATION LOGIC
+           ------------------------------------------- */
+        const reasons = [
+            "The way your smile completely alters the energy of my entire day.",
+            "Your exceptional heart, your patience, and the boundless kindness you radiate.",
+            "How incredibly safe, supported, and at home I feel whenever I am right next to you.",
+            "The priceless private jokes we share and the beautiful life engine we are building together.",
+            "Simply because you are my absolute best friend, my soulmate, and my ultimate anchor."
+        ];
+
+        const reasonText = document.getElementById('loveReason');
+        const nextBtn = document.getElementById('nextReasonBtn');
+        let lastIndex = -1;
+
+        nextBtn.addEventListener('click', () => {
+            reasonText.style.opacity = 0;
+            setTimeout(() => {
+                let randomIndex;
+                do {
+                    randomIndex = Math.floor(Math.random() * reasons.length);
+                } while (randomIndex === lastIndex);
+                lastIndex = randomIndex;
+                reasonText.innerText = reasons[randomIndex];
+                reasonText.style.opacity = 1;
+            }, 300);
+        });
+
+        /* -------------------------------------------
+           E. DYNAMIC BACKGROUND HEARTS ENGINE
+           ------------------------------------------- */
+        const heartsContainer = document.getElementById('heartsContainer');
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-particle');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = Math.random() * 0.8 + 0.8 + 'rem';
+            heart.style.animationDuration = Math.random() * 3 + 4 + 's'; 
+            heartsContainer.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 7000);
+        }
+        setInterval(createHeart, 450);
+    </script>
+</body>
+</html>
